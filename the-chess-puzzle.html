@@ -297,7 +297,7 @@
             <a href="#" onclick="restartSameBoard()">Restart</a>
             <a href="#" onclick="resetGame()">New board</a>
             <a href="#" onclick="copyBoardCode()" title="Copy board code to share">Copy Code</a>
-            <a href="#" onclick="() => {LOAD_BOARD = prompt('Paste Code here')}" title="Load board">Load Board</a>
+            <a href="#" onclick="loadBoard()" title="Load board">Load Board</a>
         </div>
     </div>
 
@@ -333,6 +333,16 @@
         // Example: "7ATH100X31X20" = board 7x7, theme ATH, then pattern
         // Leave empty to generate random board
         var LOAD_BOARD = "";  // Example: "7ATH09090910907X03"
+
+        function loadBoard () {
+            let result = prompt('Enter board code:', '7ATH09090910907X03')
+            if(result !== null && result !== "") {
+                LOAD_BOARD = result
+            } else {
+                LOAD_BOARD = ""
+            }
+            initBoard()
+        }
         
         // Select the theme using the 3-letter code (used when LOAD_BOARD is empty)
         const CURRENT_THEME = 'ATH'; 
